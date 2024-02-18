@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Project Viewer",
+  "version": "1.0",
+  "permissions": ["storage", "activeTab"],
+  "action": {
+    "default_icon": {
+      "16": "assets/images/icon.png",
+      "48": "assets/images/icon.png",
+      "128": "assets/images/icon.png"
+    },
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "assets/images/icon.png",
+    "48": "assets/images/icon.png",
+    "128": "assets/images/icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

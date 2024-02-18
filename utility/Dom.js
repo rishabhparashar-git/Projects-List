@@ -13,5 +13,10 @@ class Dom {
     }
     messageElement.style.display = 'block'
   }
+
+  setLoader(loaderValue) {
+    var loader = this.document.getElementById('loader')
+    loader.style.display = loaderValue ? 'block' : 'none'
+  }
 }
 export default Dom

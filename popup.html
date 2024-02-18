@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
+    <title>Login</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Login Page</title>
+    <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
+    <div class="loader-overlay" id="loader">
+      <div class="loader"></div>
+    </div>
+    <div class="message" id="message"></div>
+
     <div class="login-container">
       <h2>Login</h2>
       <div class="form-group">
@@ -17,9 +22,14 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required />
       </div>
-      <button id="loginBtn">Login</button>
-      <div class="message" id="message"></div>
+      <button id="login-btn">Login</button>
     </div>
-    <script src="main.js"></script>
+
+    <div class="projects-container" id="projects-container">
+      <h2>Projects</h2>
+      <div id="projects-table"></div>
+    </div>
+
+    <script defer src="popup.js" type="module"></script>
   </body>
 </html>

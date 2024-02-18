@@ -38,7 +38,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  width: 300px;
 }
 
 .login-container {
@@ -47,6 +47,10 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 300px;
+}
+
+.projects-container {
+  display: none;
 }
 
 .form-group {
@@ -81,12 +85,51 @@ button:hover {
 }
 
 .message {
-  margin-top: 15px;
   text-align: center;
   color: var(--error-main);
   display: none;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 260px;
+  background: #fff;
+  padding: 0.5rem 0.25rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .success {
   color: var(--success-main);
+}
+
+.loader-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(2px);
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.loader {
+  position: relative;
+  top: 80%;
+  left: 140px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
