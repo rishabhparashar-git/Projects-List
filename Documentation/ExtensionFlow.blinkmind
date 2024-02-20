@@ -1,0 +1,175 @@
+{
+  "rootTopicKey": "b03b2cb7-e667-409f-a8da-572353e35c43",
+  "editorRootTopicKey": "b03b2cb7-e667-409f-a8da-572353e35c43",
+  "focusKey": "c2aa1fb8-5d9d-4b37-afe9-23c2ac434286",
+  "extData": {
+    "TOPIC_REFERENCE": {
+      "reference": {}
+    }
+  },
+  "topics": [
+    {
+      "key": "b03b2cb7-e667-409f-a8da-572353e35c43",
+      "parentKey": null,
+      "subKeys": [
+        "5d150bb5-f33b-4ddb-a2d8-6b8affebbd9e",
+        "c2aa1fb8-5d9d-4b37-afe9-23c2ac434286"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "S﻿tart"
+        }
+      ]
+    },
+    {
+      "key": "5d150bb5-f33b-4ddb-a2d8-6b8affebbd9e",
+      "parentKey": "b03b2cb7-e667-409f-a8da-572353e35c43",
+      "subKeys": [
+        "1552d9f5-5f66-4447-920f-0d97cf9d8b55"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "i﻿f token available"
+        }
+      ]
+    },
+    {
+      "key": "1552d9f5-5f66-4447-920f-0d97cf9d8b55",
+      "parentKey": "5d150bb5-f33b-4ddb-a2d8-6b8affebbd9e",
+      "subKeys": [
+        "5405a727-34ea-42f3-99c3-b5d7614b792f",
+        "9d291b90-b77c-4aff-bef6-11d60d43b8df"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "F﻿etch Projects"
+        }
+      ]
+    },
+    {
+      "key": "5405a727-34ea-42f3-99c3-b5d7614b792f",
+      "parentKey": "1552d9f5-5f66-4447-920f-0d97cf9d8b55",
+      "subKeys": [
+        "6a1f3c75-07c9-418e-8028-4df09e694f2c"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "S﻿uccess"
+        }
+      ]
+    },
+    {
+      "key": "6a1f3c75-07c9-418e-8028-4df09e694f2c",
+      "parentKey": "5405a727-34ea-42f3-99c3-b5d7614b792f",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "P﻿lot Table"
+        }
+      ]
+    },
+    {
+      "key": "9d291b90-b77c-4aff-bef6-11d60d43b8df",
+      "parentKey": "1552d9f5-5f66-4447-920f-0d97cf9d8b55",
+      "subKeys": [
+        "9971b9e7-28c5-44d3-a0ac-ecafdca12729"
+      ],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "F﻿ailure"
+        }
+      ]
+    },
+    {
+      "key": "9971b9e7-28c5-44d3-a0ac-ecafdca12729",
+      "parentKey": "9d291b90-b77c-4aff-bef6-11d60d43b8df",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "c﻿lear token, show login screen"
+        }
+      ]
+    },
+    {
+      "key": "c2aa1fb8-5d9d-4b37-afe9-23c2ac434286",
+      "parentKey": "b03b2cb7-e667-409f-a8da-572353e35c43",
+      "subKeys": [],
+      "collapse": false,
+      "style": null,
+      "blocks": [
+        {
+          "type": "CONTENT",
+          "data": "i﻿f token not available"
+        }
+      ]
+    }
+  ],
+  "config": {
+    "readOnly": false,
+    "allowUndo": true,
+    "layoutDir": 2,
+    "theme": {
+      "name": "default",
+      "randomColor": true,
+      "background": "rgb(57,60,65)",
+      "highlightColor": "#50C9CE",
+      "marginH": 60,
+      "marginV": 20,
+      "contentStyle": {
+        "lineHeight": "1.5",
+        "fontSize": "16px"
+      },
+      "linkStyle": {
+        "lineRadius": 5,
+        "lineType": "curve",
+        "lineWidth": "3px"
+      },
+      "rootTopic": {
+        "contentStyle": {
+          "fontSize": "36px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "primaryTopic": {
+        "contentStyle": {
+          "fontSize": "24px"
+        },
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      },
+      "normalTopic": {
+        "subLinkStyle": {
+          "lineType": "curve",
+          "lineWidth": "3px"
+        }
+      }
+    }
+  },
+  "formatVersion": "0.0"
+}
