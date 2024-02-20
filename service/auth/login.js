@@ -1,14 +1,19 @@
-import endpoints from '../../constants/endpoints'
-import api from '../../utility/API'
-import ls from '../../utility/LocalStorage'
+import endpoints from '../../constants/endpoints.js'
+import api from '../../utility/API.js'
+import ls from '../../utility/LocalStorage.js'
 
 export default async function ({ email, password }) {
-  return api
-    .post(endpoints.auth.login, { email, password })
-    .then((res) => {
-      ls.setToken(res.token)
-      ls.setRefreshToken(res.refreshToken)
-      return res
-    })
-    .promise()
+  return new Promise((resolve, reject) => {
+    api
+      .post(endpoints.auth.login, { email, password })
+      .then((res) => {
+        console.log(res)
+        ls.setToken(res.token)
+        ls.setRefreshToken(res.refreshToken)
+        resolve(res)
+      })
+      .catch((err) => {
+        reject(err)
+      })
+  })
 }

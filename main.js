@@ -1,5 +1,5 @@
-import { loginService } from './service'
-import Dom from './utility/dom'
+import { loginService } from './service.js'
+import Dom from './utility/Dom.js'
 
 const dom = new Dom(document)
 

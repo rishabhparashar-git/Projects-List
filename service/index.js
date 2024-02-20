@@ -1,1 +1,1 @@
-export { default as loginService } from './auth/login'
+export { default as loginService } from './auth/login.js'

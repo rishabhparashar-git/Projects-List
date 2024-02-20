@@ -1,25 +1,8 @@
 const loginBtn = document.getElementById('login-btn')
+import { loginService } from './service/index.js'
+import Dom from './utility/Dom.js'
 
-const dom = {
-  setLoader: function (loaderValue) {
-    var loader = document.getElementById('loader')
-    loader.style.display = loaderValue ? 'block' : 'none'
-  },
-  displayMessage: function (text, type) {
-    var messageElement = document.getElementById('message')
-    messageElement.textContent = text
-
-    if (type === 'success') {
-      messageElement.classList.add('success')
-    } else {
-      messageElement.classList.remove('success')
-    }
-    messageElement.style.display = 'block'
-    setTimeout(() => {
-      messageElement.style.display = 'none'
-    }, 1500)
-  },
-}
+const dom = new Dom(document)
 
 loginBtn.onclick = async function () {
   var email = document.getElementById('email').value
@@ -31,6 +14,7 @@ loginBtn.onclick = async function () {
     dom.displayMessage('Logged In Successfully', 'success')
     const projects = await fetchProjects()
   } catch (err) {
+    console.error(err)
     dom.displayMessage(err?.message, 'error')
   } finally {
     dom.setLoader(false)
@@ -42,25 +26,25 @@ function setLoginContainer(loginContainerValue) {
   loginContainer.style.display = loginContainerValue ? 'block' : 'none'
 }
 
-async function loginService({ email, password }) {
-  const url = 'https://api.plutoteams.com/api/auth/login'
-  const response = await fetch(url, {
-    method: 'POST',
-    body: JSON.stringify({ email, password }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
+// async function loginService({ email, password }) {
+//   const url = 'https://api.plutoteams.com/api/auth/login'
+//   const response = await fetch(url, {
+//     method: 'POST',
+//     body: JSON.stringify({ email, password }),
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   })
 
-  const data = await response.json()
-  return new Promise(async (resolve, reject) => {
-    if (response.ok) {
-      resolve(data)
-    } else {
-      reject(data)
-    }
-  })
-}
+//   const data = await response.json()
+//   return new Promise(async (resolve, reject) => {
+//     if (response.ok) {
+//       resolve(data)
+//     } else {
+//       reject(data)
+//     }
+//   })
+// }
 
 async function fetchProjects() {
   // Simulate fetching projects with a token (replace with actual API call)

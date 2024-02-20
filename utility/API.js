@@ -1,5 +1,4 @@
-import ls from "./LocalStorage"
-
+import ls from './LocalStorage.js'
 
 class Api {
   #getHeaders() {
