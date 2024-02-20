@@ -11,8 +11,7 @@ loginBtn.onclick = async function () {
   dom.setLoader(true)
   try {
     const response = await loginService({ email, password })
-    dom.displayMessage('Logged In Successfully', 'success')
-    const projects = await fetchProjects()
+    dom.displayMessage(response.message, 'success')
   } catch (err) {
     console.error(err)
     dom.displayMessage(err?.message, 'error')
@@ -25,26 +24,6 @@ function setLoginContainer(loginContainerValue) {
   const loginContainer = document.getElementById('login-container')
   loginContainer.style.display = loginContainerValue ? 'block' : 'none'
 }
-
-// async function loginService({ email, password }) {
-//   const url = 'https://api.plutoteams.com/api/auth/login'
-//   const response = await fetch(url, {
-//     method: 'POST',
-//     body: JSON.stringify({ email, password }),
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   })
-
-//   const data = await response.json()
-//   return new Promise(async (resolve, reject) => {
-//     if (response.ok) {
-//       resolve(data)
-//     } else {
-//       reject(data)
-//     }
-//   })
-// }
 
 async function fetchProjects() {
   // Simulate fetching projects with a token (replace with actual API call)
