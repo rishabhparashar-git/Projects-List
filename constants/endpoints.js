@@ -3,6 +3,6 @@ export default {
     login: '/auth/login',
   },
   projects: {
-    all: 'project/allProjects?page=1&limit=100',
+    all: '/project/allProjects?page=1&limit=100',
   },
 }

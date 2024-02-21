@@ -1,11 +1,15 @@
-import ls from './LocalStorage.js'
+import cs from './ChromeStorage.js'
 
 class Api {
-  #getHeaders() {
+  async #getHeaders() {
     let headers = {
       'Content-Type': 'application/json',
     }
-    headers.Authorization = `Bearer ${ls.getToken()}`
+
+    const token = await cs.getTokenAsync()
+    if (token) {
+      headers.Authorization = `Bearer ${token}`
+    }
     return headers
   }
   constructor(ServerUrl) {
@@ -14,8 +18,9 @@ class Api {
 
   async get(endpoint, headers = {}) {
     const url = this.ServerUrl + endpoint
+    const defaultHeaders = await this.#getHeaders()
     const response = await fetch(url, {
-      headers: { ...this.#getHeaders(), headers },
+      headers: { ...defaultHeaders, headers },
     })
     const data = await response.json()
     return new Promise(async (resolve, reject) => {
@@ -29,10 +34,11 @@ class Api {
 
   async post(endpoint, body, headers) {
     const url = this.ServerUrl + endpoint
+    const defaultHeaders = await this.#getHeaders()
     const response = await fetch(url, {
       method: 'POST',
       body: JSON.stringify(body),
-      headers: { ...this.#getHeaders(), headers },
+      headers: { ...defaultHeaders, headers },
     })
     const data = await response.json()
     return new Promise(async (resolve, reject) => {

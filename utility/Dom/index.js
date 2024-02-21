@@ -18,5 +18,12 @@ class Dom {
     var loader = this.document.getElementById('loader')
     loader.style.display = loaderValue ? 'block' : 'none'
   }
+
+  showContainerById(id) {
+    const container = this.document.getElementById(id)
+    return function (containerValue) {
+      container.style.display = containerValue ? 'block' : 'none'
+    }
+  }
 }
 export default Dom

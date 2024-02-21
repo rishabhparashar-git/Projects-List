@@ -1,6 +1,6 @@
 import endpoints from '../../constants/endpoints.js'
 import api from '../../utility/API.js'
-import ls from '../../utility/LocalStorage.js'
+import cs from '../../utility/ChromeStorage.js'
 
 export default async function ({ email, password }) {
   return new Promise((resolve, reject) => {
@@ -8,8 +8,7 @@ export default async function ({ email, password }) {
       .post(endpoints.auth.login, { email, password })
       .then((res) => {
         console.log(res)
-        ls.setToken(res.token)
-        ls.setRefreshToken(res.refreshToken)
+        cs.setToken(res.token)
         resolve(res)
       })
       .catch((err) => {
