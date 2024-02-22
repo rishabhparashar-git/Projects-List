@@ -49,6 +49,10 @@ body {
   width: 300px;
 }
 
+.projects-container {
+  padding: 1rem;
+}
+
 .projects-container,
 .login-container {
   display: none;
