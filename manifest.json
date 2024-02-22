@@ -2,13 +2,15 @@
   "manifest_version": 3,
   "name": "Project Viewer",
   "version": "1.0",
-  "permissions": ["storage", "activeTab"],
+  "permissions": ["storage", "tabs", "activeTab", "background"],
+  "host_permissions": ["https://seppi.atlassian.net/*"],
   "action": {
     "default_icon": {
       "16": "assets/images/icon.png",
       "48": "assets/images/icon.png",
       "128": "assets/images/icon.png"
     },
+    "default_title": "Project Viewer",
     "default_popup": "popup.html"
   },
   "icons": {
@@ -16,6 +18,18 @@
     "48": "assets/images/icon.png",
     "128": "assets/images/icon.png"
   },
+  "web_accessible_resources": [
+    {
+      "resources": ["contentScripts/Jira.js"],
+      "matches": ["https://seppi.atlassian.net/*"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://seppi.atlassian.net/*"],
+      "js": ["contentScripts/Jira.js"]
+    }
+  ],
   "background": {
     "service_worker": "background.js"
   }
