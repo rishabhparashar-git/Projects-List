@@ -9,6 +9,7 @@ export default async function ({ email, password }) {
       .then((res) => {
         console.log(res)
         cs.setToken(res.token)
+        cs.setUser(res.user)
         resolve(res)
       })
       .catch((err) => {
