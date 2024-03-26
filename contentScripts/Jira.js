@@ -8,6 +8,8 @@ console.log('THE DRAGON DEVS script running')
 const btnTextCls = '.css-178ag6o'
 const btnIconCls = '.css-4h66kx'
 
+const SEPPI_PROJECT_ID = '63f6f933261f3b90bbfb412b'
+
 const btnText = {
   add: 'Add to Sheet',
   waiting: 'Adding..',
@@ -38,12 +40,35 @@ async function waitForSelector(selector) {
     if (element) {
       console.log(`Found element with selector "${selector}"`)
 
-      const token = await cs.getTokenAsync()
-      if (token) {
-        addBtn(element, {
-          label: 'Add to Pluto',
-          onClick: handleAddToPlutoClick,
-        })
+      let tokenValidated = false
+      try {
+        tokenValidated = await validateToken()
+      } catch (err) {
+        console.error(err)
+      }
+      if (tokenValidated) {
+        // findTicket
+        doesTicketExists()
+          .then((res) => {
+            if (res) {
+              addBtn(element, {
+                label: 'View in Pluto',
+                onClick: handleAddToPlutoClick,
+              })
+            } else {
+              addBtn(element, {
+                label: 'Add to Pluto',
+                onClick: () => {},
+              })
+            }
+          })
+          .catch((err) => {
+            console.error(err)
+            addBtn(element, {
+              label: 'Error',
+              onClick: () => {},
+            })
+          })
       } else {
         addBtn(element, {
           label: 'Login to Pluto',
@@ -84,6 +109,10 @@ class ChromeStorage {
     const result = await chrome.storage.local.get(['user'])
     return result.user
   }
+  clearAll() {
+    this.setUser(null)
+    this.setToken(null)
+  }
 }
 
 const cs = new ChromeStorage()
@@ -110,7 +139,7 @@ function addBtn(parent, btnProps) {
 
     const button = clonedChild.querySelector(btnTextCls)
     const icon = clonedChild.querySelector(btnIconCls)
-    icon.remove()
+    icon?.remove()
     button.innerText = btnProps.label
 
     // parent.append(clonedChild) // inserting at first place
@@ -158,6 +187,58 @@ async function createTaskAsync(ticketInfo) {
   })
 }
 
+async function validateToken() {
+  const token = await cs.getTokenAsync()
+  return new Promise(async (resolve, reject) => {
+    try {
+      const resp = await fetch('https://api.plutoteams.com/api/user/profile', {
+        method: 'GET',
+        headers: {
+          Accept: 'application.json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      if (resp.ok) {
+        resolve(true)
+      } else {
+        // removeToken
+        resolve(false)
+      }
+    } catch (err) {
+      reject(err)
+    }
+  })
+}
+
+async function doesTicketExists() {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const ticket = scrapTicketInfo()
+      const ticketQuery = {
+        project: SEPPI_PROJECT_ID,
+        externalTicketId: ticket.ticket,
+      }
+      const resp = await fetch('http://localhost:3007/Ticket/findTicket', {
+        method: 'POST',
+        headers: {
+          Accept: 'application.json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(ticketQuery),
+      })
+      if (resp.ok) {
+        resolve(true)
+      } else {
+        // removeToken
+        resolve(false)
+      }
+    } catch (err) {
+      reject(err)
+    }
+  })
+}
+
 function scrapTicketInfo() {
   const title = document.querySelector(TITLE_SELECTOR)?.innerText || 'title'
   const assignee =
@@ -201,7 +282,7 @@ async function scrapTicketInfoPluto() {
     status: '63f6f933261f3b90bbfb4133',
     assignee: [{ user: user._id }],
     dueDate: getFutureDate(15),
-    project: '63f6f933261f3b90bbfb412b',
+    project: SEPPI_PROJECT_ID,
     sprint: null,
     storyPoint: 0,
   }
