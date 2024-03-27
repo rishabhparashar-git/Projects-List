@@ -58,7 +58,7 @@ async function waitForSelector(selector) {
             } else {
               addBtn(element, {
                 label: 'Add to Pluto',
-                onClick: () => {},
+                onClick: handleAddToPlutoClick,
               })
             }
           })
